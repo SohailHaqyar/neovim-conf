@@ -36,12 +36,13 @@ M.ui = {
     -- round and block will work for minimal theme only
     separator_style = "default",
     overriden_modules = nil,
+    enabled = false,
   },
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
     show_numbers = false,
-    enabled = true,
+    enabled = false,
     lazyload = true,
     overriden_modules = nil,
   },

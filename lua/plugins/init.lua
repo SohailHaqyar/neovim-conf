@@ -1,9 +1,7 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-
   "nvim-lua/plenary.nvim",
-
   {
     "NvChad/base46",
     branch = "v2.0",
@@ -212,20 +210,20 @@ local default_plugins = {
   },
 
   -- file managing , picker etc
-  {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    init = function()
-      require("core.utils").load_mappings "nvimtree"
-    end,
-    opts = function()
-      return require "plugins.configs.nvimtree"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "nvimtree")
-      require("nvim-tree").setup(opts)
-    end,
-  },
+  -- {
+  -- "nvim-tree/nvim-tree.lua",
+  -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+  -- init = function()
+  --   require("core.utils").load_mappings "nvimtree"
+  -- end,
+  -- opts = function()
+  --   return require "plugins.configs.nvimtree"
+  -- end,
+  -- config = function(_, opts)
+  --   dofile(vim.g.base46_cache .. "nvimtree")
+  --   require("nvim-tree").setup(opts)
+  -- end,
+  -- },
 
   {
     "nvim-telescope/telescope.nvim",

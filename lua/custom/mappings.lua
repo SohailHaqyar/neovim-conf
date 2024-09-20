@@ -28,13 +28,27 @@ M.disabled = {
 -- Your custom mappings
 M.custom = {
   n = {
+    ["<leader>ws"] = {
+      "<cmd>w|source % <CR>",
+      "Write & Source",
+    },
     ["<leader>;"] = {
       "<cmd>cn<CR>zz",
-      "Forward Next",
+      "Quickfix Next",
     },
     ["<leader>h"] = {
       "<cmd>cp<CR>zz",
       "Quickfix Prev",
+    },
+
+    ["<C-u>"] = {
+      "<C-u>zz",
+      "Up & Center",
+    },
+
+    ["<C-d>"] = {
+      "<C-d>zz",
+      "Down & Center",
     },
     [";"] = {
       "<C-w>",
@@ -62,11 +76,16 @@ M.custom = {
       "<C-w>=",
       "Equalize width",
     },
-
-    ["<leader>pv"] = {
-      "<cmd>silent !tmux neww darkseid<CR>",
-      "Open tmux sessionizer",
+    --
+    ["<C-n>"] = {
+      "<cmd>Ex<CR>",
+      "Netrw",
     },
+
+    -- ["<C-n>"] = {
+    --   "<cmd>Triptych<CR>",
+    --   "File Explorer",
+    -- },
     -- The Harpoon Man
     ["<leader>a"] = {
       function()
@@ -80,6 +99,25 @@ M.custom = {
       end,
       "Harpoon quick menu",
     },
+    -- :lua require("harpoon.ui").nav_next()                   -- navigates to next mark
+    -- :lua require("harpoon.ui").nav_prev()                   -- navigates to previous mark
+    --
+    --
+    --
+    [";h"] = {
+      function()
+        require("harpoon.ui").nav_prev()
+      end,
+      "Harpoon nav prev",
+    },
+
+    [";l"] = {
+      function()
+        require("harpoon.ui").nav_next()
+      end,
+      "Harpoon nav next",
+    },
+
     ["<C-p>"] = {
       function()
         require("harpoon.ui").nav_file(1)
@@ -104,11 +142,15 @@ M.custom = {
       end,
       "Harpoon nav file 4",
     },
+    ["<leader>e"] = {
+      "<cmd> !neovide .<CR>",
+      "Neovide",
+    },
+
     --
     [";;"] = {
-      ":qa!<CR>",
+      "<cmd>qa!<CR>",
       "Write and Quit All",
-      opts = { nowait = true },
     },
     ["<leader>nde"] = {
       function()

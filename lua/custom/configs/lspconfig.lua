@@ -3,12 +3,12 @@ local on_attach = config.on_attach
 local capabilities = config.capabilities
 
 local lspconfig = require "lspconfig"
--- local util = require "lspconfig/util"
+local util = require "lspconfig/util"
 
 -- HTML, CSS, JS, Angular
 
 -- Typescript
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   init_options = {
@@ -19,13 +19,7 @@ lspconfig.tsserver.setup {
   },
 }
 
--- FUCK this lsp
--- lspconfig.angularls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
-
-lspconfig.eslint.setup {
+lspconfig.angularls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -46,12 +40,10 @@ lspconfig.astro.setup {
 }
 --
 -- -- Rust
--- lspconfig.rust_analyzer.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { "rust" },
---   root_dir = util.root_pattern "Cargo.toml",
--- }
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 --
 -- -- Ruby
 -- lspconfig.ruby_ls.setup {
@@ -63,3 +55,23 @@ lspconfig.clangd.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+lspconfig.hyprls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- lspconfig.csharp_ls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
