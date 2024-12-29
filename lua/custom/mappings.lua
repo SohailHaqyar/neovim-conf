@@ -23,6 +23,10 @@ M.disabled = {
     ["<C-t>"] = "",
     ["<leader>e"] = "",
     ["<leader>h"] = "",
+    ["<A-h>"] = "",
+  },
+  t = {
+    ["<A-h>"] = "",
   },
 }
 -- Your custom mappings
@@ -31,8 +35,17 @@ M.custom = {
     ["<leader>ws"] = {
       "<cmd>w|source % <CR>",
       "Write & Source",
+
     },
-    ["<leader>;"] = {
+    ["<leader>tn"] = {
+      "<cmd>tabnew %<CR>",
+      "Open current file in a new tab",
+    },
+    ["<leader>pr"] = {
+      "<cmd>DiffviewOpen HEAD..origin/master<CR>",
+      "Open Diffview with master",
+    },
+    ["<leader>l"] = {
       "<cmd>cn<CR>zz",
       "Quickfix Next",
     },
@@ -41,23 +54,31 @@ M.custom = {
       "Quickfix Prev",
     },
 
-    ["<C-u>"] = {
-      "<C-u>zz",
-      "Up & Center",
+    ["<leader>ts"] = {
+      "<cmd>silent !tmux neww darkseid<CR>",
+      "Darkseid",
     },
 
-    ["<C-d>"] = {
-      "<C-d>zz",
-      "Down & Center",
-    },
+    -- ["<C-u>"] = {
+    --   "<C-u>zz",
+    --   "Up & Center",
+    -- },
+
+    -- ["<C-d>"] = {
+    --   "<C-d>zz",
+    --   "Down & Center",
+    -- },
     [";"] = {
       "<C-w>",
       "Manage windows",
     },
-    -- ['<leader>e'] = {
-    -- 	'<C-w>vgd',
-    -- 	'open definition in vertical split',
-    -- },
+    ['<leader>gd'] = {
+      function ()
+        vim.lsp.buf.definition()
+        vim.cmd('tabnew %')
+      end,
+    	'open definition in new tab',
+    },
     ["<leader>+"] = {
       ":lua IncreaseWindowWidth()<CR>",
       "Increase width",
@@ -77,12 +98,18 @@ M.custom = {
       "Equalize width",
     },
     --
+    -- ["<C-n>"] = {
+    --   "<cmd>Neotree<CR>",
+    --   "Neo Tree",
+    --
+    -- },
+
     ["<C-n>"] = {
-      "<cmd>Ex<CR>",
-      "Netrw",
+      "<cmd>:Ex<CR>",
+      "Netrw File Explorer",
     },
 
-    -- ["<C-n>"] = {
+    -- ["<leader>pv"] = {
     --   "<cmd>Triptych<CR>",
     --   "File Explorer",
     -- },
@@ -142,9 +169,19 @@ M.custom = {
       end,
       "Harpoon nav file 4",
     },
+    ["<leader>gf"] = {
+      "<C-w>vgf",
+      "go to file",
+    },
     ["<leader>e"] = {
-      "<cmd> !neovide .<CR>",
+      function()
+        vim.cmd "silent! neovide ."
+      end,
       "Neovide",
+      opts = {
+        nowait = true,
+        silent = true,
+      },
     },
 
     --
@@ -255,9 +292,51 @@ M.buffers = {
 
 M.trouble = {
   n = {
-    ["<leader>tt"] = {
-      "<cmd>TroubleToggle<CR>",
-      "Toggle Trouble",
+    ["<leader>td"] = {
+      "<cmd>Trouble diagnostics<CR>",
+      "Trouble diagnostics",
+    },
+    ["<leader>tc"] = {
+      "<cmd>Trouble close<CR>",
+      "Trouble close",
+    },
+  },
+}
+
+M.nvterm = {
+  plugin = true,
+
+  t = {
+    -- toggle in terminal mode
+    ["<A-i>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+
+    ["<A-v>"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "Toggle vertical term",
+    },
+  },
+
+  n = {
+    -- toggle in normal mode
+    ["<A-i>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+
+    ["<A-v>"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "Toggle vertical term",
     },
   },
 }
@@ -288,5 +367,4 @@ M.quickfix = {
     },
   },
 }
-
 return M

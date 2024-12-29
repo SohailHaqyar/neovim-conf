@@ -7,10 +7,10 @@ local completion = null_ls.builtins.completion.spell
 local sources = {
   formatting.prettierd,
   formatting.stylua,
-  code_actions.refactoring,
   formatting.gofumpt,
   completion.spell,
   completion.tags,
+  code_actions.eslint_d,
 }
 
 null_ls.setup {
