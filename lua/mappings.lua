@@ -12,6 +12,7 @@ map(allModes, ";;", ":qa!<CR>")
 map(allModes, "<C-u>", "<C-u>zz")
 map(allModes, "<C-d>", "<C-d>zz")
 map({"n"}, "<leader>ts", "<cmd>silent !tmux neww darkseid<CR>")
+map({"n"}, "<leader>cfn", "<cmd>silent !echo % | wl-copy <CR>")
 
 local custom = {
   n = {

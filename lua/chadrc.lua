@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "tokyodark",
+  theme = "rosepine",
 
   ---@diagnostic disable-next-line: missing-fields
   hl_override = {
