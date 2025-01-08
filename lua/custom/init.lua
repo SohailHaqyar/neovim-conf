@@ -14,8 +14,9 @@ if vim.g.neovide then
   -- General Settings
   vim.o.guifont = "Agave Nerd Font Mono:h18" -- text below applies for VimScript
   vim.g.neovide_cursor_vfx_mode = "railgun"
-  vim.g.neovide_input_macos_alt_is_meta = true
-  linespace = 15
+
+  vim.opt.linespace = 15
+  vim.g.neovide_input_macos_alt_is_meta = false
 
   -- Scale Factor for Neovide
   vim.g.neovide_scale_factor = 1.0
@@ -23,9 +24,9 @@ if vim.g.neovide then
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
   end
   vim.keymap.set("n", "<C-=>", function()
-    change_scale_factor(1.25)
+    change_scale_factor(1.1)
   end)
   vim.keymap.set("n", "<C-->", function()
-    change_scale_factor(1 / 1.25)
+    change_scale_factor(1 / 1.1)
   end)
 end

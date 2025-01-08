@@ -4,9 +4,11 @@ local capabilities = config.capabilities
 
 local lspconfig = require "lspconfig"
 -- local util = require "lspconfig/util"
-
--- HTML, CSS, JS, Angular
-
+-- json
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 -- Typescript
 lspconfig.tsserver.setup {
   on_attach = on_attach,
@@ -20,10 +22,10 @@ lspconfig.tsserver.setup {
 }
 
 -- FUCK this lsp
--- lspconfig.angularls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
+lspconfig.angularls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 lspconfig.eslint.setup {
   on_attach = on_attach,
@@ -60,6 +62,12 @@ lspconfig.astro.setup {
 -- }
 
 lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.tailwindcss.setup {
+
   on_attach = on_attach,
   capabilities = capabilities,
 }

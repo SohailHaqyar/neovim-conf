@@ -87,48 +87,48 @@ local plugins = {
   },
   { "kevinhwang91/nvim-bqf", event = "VeryLazy" },
   -- lazy.nvim
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function()
-      require("noice").setup {
-        lsp = {
-          signature = {
-            enabled = false,
-          },
-          hover = {
-            enabled = false,
-          },
-        },
-        messages = {
-          enabled = false,
-        },
-      }
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      {
-        "rcarriga/nvim-notify",
-
-        config = function()
-          local notify = require "notify"
-          vim.notify = function(msg, ...)
-            if msg:match "warning: multiple different client offset_encodings" then
-              return
-            end
-
-            if
-              msg:match "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
-            then
-              return
-            end
-            notify(msg, ...)
-          end
-        end,
-      },
-    },
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   config = function()
+  --     require("noice").setup {
+  --       lsp = {
+  --         signature = {
+  --           enabled = false,
+  --         },
+  --         hover = {
+  --           enabled = false,
+  --         },
+  --       },
+  --       messages = {
+  --         enabled = false,
+  --       },
+  --     }
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     {
+  --       "rcarriga/nvim-notify",
+  --
+  --       config = function()
+  --         local notify = require "notify"
+  --         vim.notify = function(msg, ...)
+  --           if msg:match "warning: multiple different client offset_encodings" then
+  --             return
+  --           end
+  --
+  --           if
+  --             msg:match "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
+  --           then
+  --             return
+  --           end
+  --           notify(msg, ...)
+  --         end
+  --       end,
+  --     },
+  --   },
+  -- },
 
   {
     "max397574/better-escape.nvim",
@@ -143,6 +143,31 @@ local plugins = {
       require("harpoon").setup()
     end,
   },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    event = "BufEnter",
+    config = function()
+      require("neogit").setup()
+    end,
+  },
+  {
+    "ThePrimeagen/vim-apm",
+    event = "BufEnter",
+    config = function()
+      local apm = require "vim-apm"
+      apm:setup {}
+    end,
+  },
+  -- local apm = require("vim-apm")
+  --
+  -- apm:setup({})
+  -- vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
 }
 
 return plugins
